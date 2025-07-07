@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { VideoIntro } from './components/VideoIntro';
+import { VideoIntro } from './components/VideoIntro.tsx';
 import { RocketForm } from './components/RocketForm';
 import { SimulationResults } from './components/SimulationResults';
 import { LaunchMap } from './components/LaunchMap';
