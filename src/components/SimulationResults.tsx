@@ -119,8 +119,16 @@ export const SimulationResults: React.FC<SimulationResultsProps> = ({ result }) 
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={plots.altitude}>
               <CartesianGrid strokeDasharray="3 3" stroke={chartConfig.gridStroke} />
-              <XAxis dataKey="time" stroke={chartConfig.textColor} />
-              <YAxis stroke={chartConfig.textColor} />
+              <XAxis 
+                dataKey="time" 
+                stroke={chartConfig.textColor}
+                tick={{ fill: chartConfig.textColor }}
+              />
+              <YAxis 
+                stroke={chartConfig.textColor}
+                tick={{ fill: chartConfig.textColor }}
+                tickFormatter={(value) => `${(value / 1000).toFixed(0)}k`}
+              />
               <Tooltip
                 contentStyle={{
                   backgroundColor: chartConfig.backgroundColor,
@@ -128,10 +136,11 @@ export const SimulationResults: React.FC<SimulationResultsProps> = ({ result }) 
                   borderRadius: '8px',
                   color: chartConfig.textColor
                 }}
-                formatter={(value: any, _name: string, props: any) => [
-                  `${(value / 1000).toFixed(2)} km`,
-                  `Stage ${props.payload.stage} Altitude`
+                formatter={(value: any) => [
+                  `${(Number(value) / 1000).toFixed(2)} km`,
+                  'Altitude'
                 ]}
+                labelFormatter={(label) => `Time: ${label}s`}
               />
               <Legend />
               <Line
@@ -150,8 +159,15 @@ export const SimulationResults: React.FC<SimulationResultsProps> = ({ result }) 
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={plots.velocity}>
               <CartesianGrid strokeDasharray="3 3" stroke={chartConfig.gridStroke} />
-              <XAxis dataKey="time" stroke={chartConfig.textColor} />
-              <YAxis stroke={chartConfig.textColor} />
+              <XAxis 
+                dataKey="time" 
+                stroke={chartConfig.textColor}
+                tick={{ fill: chartConfig.textColor }}
+              />
+              <YAxis 
+                stroke={chartConfig.textColor}
+                tick={{ fill: chartConfig.textColor }}
+              />
               <Tooltip
                 contentStyle={{
                   backgroundColor: chartConfig.backgroundColor,
@@ -159,10 +175,11 @@ export const SimulationResults: React.FC<SimulationResultsProps> = ({ result }) 
                   borderRadius: '8px',
                   color: chartConfig.textColor
                 }}
-                formatter={(value: any, _name: string, props: any) => [
-                  `${value.toFixed(2)} m/s`,
-                  `Stage ${props.payload.stage} Velocity`
+                formatter={(value: any) => [
+                  `${Number(value).toFixed(2)} m/s`,
+                  'Velocity'
                 ]}
+                labelFormatter={(label) => `Time: ${label}s`}
               />
               <Legend />
               <Line
@@ -181,8 +198,15 @@ export const SimulationResults: React.FC<SimulationResultsProps> = ({ result }) 
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={plots.acceleration}>
               <CartesianGrid strokeDasharray="3 3" stroke={chartConfig.gridStroke} />
-              <XAxis dataKey="time" stroke={chartConfig.textColor} />
-              <YAxis stroke={chartConfig.textColor} />
+              <XAxis 
+                dataKey="time" 
+                stroke={chartConfig.textColor}
+                tick={{ fill: chartConfig.textColor }}
+              />
+              <YAxis 
+                stroke={chartConfig.textColor}
+                tick={{ fill: chartConfig.textColor }}
+              />
               <Tooltip
                 contentStyle={{
                   backgroundColor: chartConfig.backgroundColor,
@@ -190,10 +214,11 @@ export const SimulationResults: React.FC<SimulationResultsProps> = ({ result }) 
                   borderRadius: '8px',
                   color: chartConfig.textColor
                 }}
-                formatter={(value: any, _name: string, props: any) => [
-                  `${value.toFixed(2)} m/s²`,
-                  `Stage ${props.payload.stage} Acceleration`
+                formatter={(value: any) => [
+                  `${Number(value).toFixed(2)} m/s²`,
+                  'Acceleration'
                 ]}
+                labelFormatter={(label) => `Time: ${label}s`}
               />
               <Legend />
               <Line
@@ -212,8 +237,16 @@ export const SimulationResults: React.FC<SimulationResultsProps> = ({ result }) 
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={plots.thrust}>
               <CartesianGrid strokeDasharray="3 3" stroke={chartConfig.gridStroke} />
-              <XAxis dataKey="time" stroke={chartConfig.textColor} />
-              <YAxis stroke={chartConfig.textColor} />
+              <XAxis 
+                dataKey="time" 
+                stroke={chartConfig.textColor}
+                tick={{ fill: chartConfig.textColor }}
+              />
+              <YAxis 
+                stroke={chartConfig.textColor}
+                tick={{ fill: chartConfig.textColor }}
+                tickFormatter={(value) => `${(value / 1000).toFixed(0)}k`}
+              />
               <Tooltip
                 contentStyle={{
                   backgroundColor: chartConfig.backgroundColor,
@@ -221,10 +254,11 @@ export const SimulationResults: React.FC<SimulationResultsProps> = ({ result }) 
                   borderRadius: '8px',
                   color: chartConfig.textColor
                 }}
-                formatter={(value: any, _name: string, props: any) => [
-                  `${(value / 1000).toFixed(0)} kN`,
-                  `Stage ${props.payload.stage} Thrust`
+                formatter={(value: any) => [
+                  `${(Number(value) / 1000).toFixed(0)} kN`,
+                  'Thrust'
                 ]}
+                labelFormatter={(label) => `Time: ${label}s`}
               />
               <Legend />
               <Line
@@ -243,8 +277,16 @@ export const SimulationResults: React.FC<SimulationResultsProps> = ({ result }) 
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={plots.mass}>
               <CartesianGrid strokeDasharray="3 3" stroke={chartConfig.gridStroke} />
-              <XAxis dataKey="time" stroke={chartConfig.textColor} />
-              <YAxis stroke={chartConfig.textColor} />
+              <XAxis 
+                dataKey="time" 
+                stroke={chartConfig.textColor}
+                tick={{ fill: chartConfig.textColor }}
+              />
+              <YAxis 
+                stroke={chartConfig.textColor}
+                tick={{ fill: chartConfig.textColor }}
+                tickFormatter={(value) => `${(value / 1000).toFixed(0)}t`}
+              />
               <Tooltip
                 contentStyle={{
                   backgroundColor: chartConfig.backgroundColor,
@@ -252,10 +294,11 @@ export const SimulationResults: React.FC<SimulationResultsProps> = ({ result }) 
                   borderRadius: '8px',
                   color: chartConfig.textColor
                 }}
-                formatter={(value: any, _name: string, props: any) => [
-                  `${(value / 1000).toFixed(1)} tons`,
-                  `Stage ${props.payload.stage} Mass`
+                formatter={(value: any) => [
+                  `${(Number(value) / 1000).toFixed(1)} tons`,
+                  'Mass'
                 ]}
+                labelFormatter={(label) => `Time: ${label}s`}
               />
               <Legend />
               <Line
@@ -274,8 +317,16 @@ export const SimulationResults: React.FC<SimulationResultsProps> = ({ result }) 
           <ResponsiveContainer width="100%" height="100%">
             <LineChart>
               <CartesianGrid strokeDasharray="3 3" stroke={chartConfig.gridStroke} />
-              <XAxis dataKey="time" stroke={chartConfig.textColor} />
-              <YAxis stroke={chartConfig.textColor} />
+              <XAxis 
+                dataKey="time" 
+                stroke={chartConfig.textColor}
+                tick={{ fill: chartConfig.textColor }}
+              />
+              <YAxis 
+                stroke={chartConfig.textColor}
+                tick={{ fill: chartConfig.textColor }}
+                tickFormatter={(value) => `${(value / 1000).toFixed(0)}k`}
+              />
               <Tooltip
                 contentStyle={{
                   backgroundColor: chartConfig.backgroundColor,
@@ -283,7 +334,7 @@ export const SimulationResults: React.FC<SimulationResultsProps> = ({ result }) 
                   borderRadius: '8px',
                   color: chartConfig.textColor
                 }}
-                formatter={(value: any) => [`${(value / 1000).toFixed(2)} km`, 'Altitude']}
+                formatter={(value: any) => [`${(Number(value) / 1000).toFixed(2)} km`, 'Altitude']}
               />
               <Legend />
               <Line
