@@ -28,7 +28,7 @@ interface RocketFormProps {
 }
 
 export const RocketForm: React.FC<RocketFormProps> = ({ onSubmit, isLoading = false }) => {
-  const { register, handleSubmit, formState: { errors }, watch } = useForm<LaunchParameters>({
+  const { register, handleSubmit, formState: { errors } } = useForm<LaunchParameters>({
     resolver: yupResolver(schema),
     defaultValues: {
       latitude: 28.5721,
@@ -47,8 +47,6 @@ export const RocketForm: React.FC<RocketFormProps> = ({ onSubmit, isLoading = fa
       }
     }
   });
-
-  const formData = watch();
 
   const inputClasses = `
     w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg
