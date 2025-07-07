@@ -41,7 +41,6 @@ export const useSimulation = () => {
     let altitude = 0;
     let velocity = 0;
     let mass = rocketSpecs.mass;
-    let stage = 1 as 1 | 2;
     
     // Stage 1 simulation
     while (time <= rocketSpecs.stage1BurnTime && altitude >= 0) {
@@ -84,7 +83,6 @@ export const useSimulation = () => {
     
     // Stage separation
     mass = rocketSpecs.stageSeparationMass;
-    stage = 2;
     const stage2StartTime = time;
     
     // Stage 2 simulation

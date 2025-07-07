@@ -1,7 +1,7 @@
 import React from 'react';
 import { SimulationResult } from '../types/rocket';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { TrendingUp, Zap, Activity, Target, Clock, Gauge, Flame, Weight } from 'lucide-react';
+import { TrendingUp, Activity, Target, Clock, Gauge, Flame } from 'lucide-react';
 
 interface SimulationResultsProps {
   result: SimulationResult;
@@ -128,7 +128,7 @@ export const SimulationResults: React.FC<SimulationResultsProps> = ({ result }) 
                   borderRadius: '8px',
                   color: chartConfig.textColor
                 }}
-                formatter={(value: any, name: string, props: any) => [
+                formatter={(value: any, _name: string, props: any) => [
                   `${(value / 1000).toFixed(2)} km`,
                   `Stage ${props.payload.stage} Altitude`
                 ]}
@@ -159,7 +159,7 @@ export const SimulationResults: React.FC<SimulationResultsProps> = ({ result }) 
                   borderRadius: '8px',
                   color: chartConfig.textColor
                 }}
-                formatter={(value: any, name: string, props: any) => [
+                formatter={(value: any, _name: string, props: any) => [
                   `${value.toFixed(2)} m/s`,
                   `Stage ${props.payload.stage} Velocity`
                 ]}
@@ -190,7 +190,7 @@ export const SimulationResults: React.FC<SimulationResultsProps> = ({ result }) 
                   borderRadius: '8px',
                   color: chartConfig.textColor
                 }}
-                formatter={(value: any, name: string, props: any) => [
+                formatter={(value: any, _name: string, props: any) => [
                   `${value.toFixed(2)} m/s²`,
                   `Stage ${props.payload.stage} Acceleration`
                 ]}
@@ -221,7 +221,7 @@ export const SimulationResults: React.FC<SimulationResultsProps> = ({ result }) 
                   borderRadius: '8px',
                   color: chartConfig.textColor
                 }}
-                formatter={(value: any, name: string, props: any) => [
+                formatter={(value: any, _name: string, props: any) => [
                   `${(value / 1000).toFixed(0)} kN`,
                   `Stage ${props.payload.stage} Thrust`
                 ]}
@@ -252,7 +252,7 @@ export const SimulationResults: React.FC<SimulationResultsProps> = ({ result }) 
                   borderRadius: '8px',
                   color: chartConfig.textColor
                 }}
-                formatter={(value: any, name: string, props: any) => [
+                formatter={(value: any, _name: string, props: any) => [
                   `${(value / 1000).toFixed(1)} tons`,
                   `Stage ${props.payload.stage} Mass`
                 ]}
