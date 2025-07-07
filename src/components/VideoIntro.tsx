@@ -1,25 +1,16 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 
 interface VideoIntroProps {
   onVideoClick: () => void;
 }
 
 export const VideoIntro: React.FC<VideoIntroProps> = ({ onVideoClick }) => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(console.error);
-    }
-  }, []);
-
   return (
     <div 
       className="fixed inset-0 w-screen h-screen cursor-pointer z-50 bg-black"
       onClick={onVideoClick}
     >
       <video
-        ref={videoRef}
         className="w-full h-full object-cover"
         loop
         muted
