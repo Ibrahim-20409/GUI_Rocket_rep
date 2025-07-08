@@ -2,6 +2,7 @@ import React from 'react';
 import { SimulationResult } from '../types/rocket';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { TrendingUp, Activity, Target, Clock, Gauge, Flame } from 'lucide-react';
+import { AnimatedCounter } from './AnimatedCounter';
 
 interface SimulationResultsProps {
   result: SimulationResult;
@@ -20,7 +21,7 @@ export const SimulationResults: React.FC<SimulationResultsProps> = ({ result }) 
   const StatCard: React.FC<{ icon: React.ReactNode; title: string; value: string | number; unit?: string; color?: string }> = ({ 
     icon, title, value, unit, color = 'bg-red-600' 
   }) => (
-    <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-gray-600 transition-colors">
+    <div className="bg-gray-800/90 backdrop-blur-sm p-4 rounded-lg border border-gray-700 hover:border-gray-600 transition-colors">
       <div className="flex items-center gap-3 mb-2">
         <div className={`p-2 ${color} rounded-lg`}>
           {icon}
@@ -28,8 +29,20 @@ export const SimulationResults: React.FC<SimulationResultsProps> = ({ result }) 
         <span className="text-sm font-medium text-gray-300">{title}</span>
       </div>
       <div className="text-2xl font-bold text-white">
-        {typeof value === 'number' ? value.toFixed(2) : value}
-        {unit && <span className="text-lg text-gray-400 ml-1">{unit}</span>}
+        {typeof value === 'number' ? (
+          <AnimatedCounter 
+            targetValue={value} 
+            duration={2500}
+            decimals={2}
+            unit={unit}
+            className="text-2xl font-bold text-white"
+          />
+        ) : (
+          <>
+            {value}
+            {unit && <span className="text-lg text-gray-400 ml-1">{unit}</span>}
+          </>
+        )}
       </div>
     </div>
   );
