@@ -3,7 +3,6 @@ import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
 
-// Auto-enter fullscreen on page load
 const enterFullscreen = () => {
   const elem = document.documentElement;
   if (elem.requestFullscreen) {
@@ -15,13 +14,7 @@ const enterFullscreen = () => {
   }
 };
 
-// Enter fullscreen immediately when the page loads
-document.addEventListener('DOMContentLoaded', () => {
-  // Small delay to ensure the page is fully loaded
-  setTimeout(enterFullscreen, 100);
-});
-
-// Also try to enter fullscreen when the user first interacts with the page
+// Enter fullscreen when the user first interacts with the page
 document.addEventListener('click', enterFullscreen, { once: true });
 document.addEventListener('keydown', enterFullscreen, { once: true });
 
