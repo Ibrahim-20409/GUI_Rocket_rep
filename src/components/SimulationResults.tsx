@@ -35,7 +35,7 @@ export const SimulationResults: React.FC<SimulationResultsProps> = ({ result }) 
   );
 
   const ChartContainer: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => (
-    <div className="bg-gray-900 p-6 rounded-xl border border-gray-700">
+    <div className="bg-gray-900/90 backdrop-blur-sm p-6 rounded-xl border border-gray-700">
       <h3 className="text-lg font-semibold text-white mb-4">{title}</h3>
       <div className="h-80">
         {children}
@@ -46,7 +46,7 @@ export const SimulationResults: React.FC<SimulationResultsProps> = ({ result }) 
   return (
     <div className="space-y-8">
       {/* Optimal Parameters */}
-      <div className="bg-black border border-gray-800 rounded-2xl p-8">
+      <div className="bg-black/90 backdrop-blur-sm border border-gray-800 rounded-2xl p-8">
         <div className="flex items-center gap-3 mb-6">
           <div className="p-3 bg-red-600 rounded-lg">
             <Target className="w-8 h-8 text-white" />

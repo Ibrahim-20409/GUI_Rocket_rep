@@ -68,7 +68,7 @@ export const LaunchMap: React.FC<LaunchMapProps> = ({ latitude, longitude, onCoo
   }, [popupLabel, latitude, longitude]);
 
   return (
-    <div className="bg-gray-900 border border-gray-700 rounded-xl p-6">
+    <div className="bg-gray-900/90 backdrop-blur-sm border border-gray-700 rounded-xl p-6">
       <div className="flex items-center gap-2 mb-6">
         <Globe className="w-5 h-5 text-red-500" />
         <h3 className="text-xl font-semibold text-white">Launch Site Selection</h3>

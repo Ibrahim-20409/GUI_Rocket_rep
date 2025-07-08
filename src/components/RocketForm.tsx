@@ -72,7 +72,7 @@ export const RocketForm: React.FC<RocketFormProps> = ({ onSubmit, isLoading = fa
 
   return (
     <div className="max-w-6xl mx-auto">
-      <div className="bg-black border border-gray-800 rounded-2xl p-8 shadow-2xl">
+      <div className="bg-black/90 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 shadow-2xl">
         <div className="flex items-center gap-3 mb-8">
           <div className="p-3 bg-red-600 rounded-lg">
             <Rocket className="w-8 h-8 text-white" />

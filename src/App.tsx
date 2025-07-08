@@ -1,23 +1,16 @@
 import React, { useState } from 'react';
-import { VideoIntro } from './components/VideoIntro';
+import { VideoBackground } from './components/VideoBackground';
 import { RocketForm } from './components/RocketForm';
 import { SimulationResults } from './components/SimulationResults';
 import { LaunchMap } from './components/LaunchMap';
-import { LoadingSpinner } from './components/LoadingSpinner';
-import { ErrorMessage } from './components/ErrorMessage';
 import { useSimulation } from './hooks/useSimulation';
 import { LaunchParameters } from './types/rocket';
 import { Rocket, Activity, Map, BarChart3 } from 'lucide-react';
 
 function App() {
-  const [showVideo, setShowVideo] = useState(true);
   const [activeTab, setActiveTab] = useState<'form' | 'map' | 'results'>('form');
   const [formData, setFormData] = useState<LaunchParameters | null>(null);
   const { simulation, isRunning, runSimulation } = useSimulation();
-
-  const handleVideoClick = () => {
-    setShowVideo(false);
-  };
 
   const handleFormSubmit = async (data: LaunchParameters) => {
     setFormData(data);
@@ -35,10 +28,6 @@ function App() {
     }
   };
 
-  if (showVideo) {
-    return <VideoIntro onVideoClick={handleVideoClick} />;
-  }
-
   const tabs = [
     { id: 'form', label: 'Configuration', icon: <Rocket className="w-5 h-5" /> },
     { id: 'map', label: 'Launch Site', icon: <Map className="w-5 h-5" /> },
@@ -46,9 +35,12 @@ function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen relative">
+      {/* Video Background */}
+      <VideoBackground opacity={0.4} />
+      
       {/* Header */}
-      <header className="bg-black border-b border-gray-800">
+      <header className="relative z-10 bg-black/80 backdrop-blur-sm border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-3">
@@ -69,7 +61,7 @@ function App() {
       </header>
 
       {/* Navigation Tabs */}
-      <nav className="bg-gray-900 border-b border-gray-800">
+      <nav className="relative z-10 bg-gray-900/80 backdrop-blur-sm border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex space-x-8">
             {tabs.map((tab) => (
@@ -94,7 +86,7 @@ function App() {
       </nav>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {activeTab === 'form' && (
           <RocketForm onSubmit={handleFormSubmit} isLoading={isRunning} />
         )}
@@ -109,10 +101,6 @@ function App() {
 
         {activeTab === 'results' && (
           <div className="space-y-8">
-            {isRunning && (
-              <LoadingSpinner message="Running trajectory simulation..." />
-            )}
-            
             {simulation && !isRunning && (
               <SimulationResults result={simulation} />
             )}
@@ -128,7 +116,7 @@ function App() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-black border-t border-gray-800 mt-16">
+      <footer className="relative z-10 bg-black/80 backdrop-blur-sm border-t border-gray-800 mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="text-center text-gray-400 text-sm">
             <p>© 2025 Rocket Simulation Suite - Advanced Aerospace Modeling Platform</p>
