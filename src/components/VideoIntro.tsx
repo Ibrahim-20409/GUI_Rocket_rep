@@ -40,15 +40,18 @@ export const VideoIntro: React.FC<VideoIntroProps> = ({ onVideoClick }) => {
       {/* Overlay Text */}
       <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30">
         <div className="text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-2xl">
-            Click anywhere to enter Rocket Simulation
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 drop-shadow-2xl">
+            ROCKET SIMULATION SUITE
           </h1>
-          <p className="text-lg md:text-xl text-gray-300 mb-6 drop-shadow-lg">
-            Experience immersive fullscreen rocket trajectory modeling
+          <p className="text-xl md:text-2xl text-gray-200 mb-8 drop-shadow-lg font-light">
+            Advanced Trajectory Modeling & Optimization Platform
+          </p>
+          <p className="text-lg md:text-xl text-red-400 mb-6 drop-shadow-lg animate-pulse">
+            Click anywhere to begin mission configuration
           </p>
           <div className="animate-pulse">
-            <div className="w-16 h-16 mx-auto border-4 border-white rounded-full flex items-center justify-center">
-              <div className="w-0 h-0 border-l-8 border-l-white border-t-4 border-t-transparent border-b-4 border-b-transparent ml-1"></div>
+            <div className="w-20 h-20 mx-auto border-4 border-red-500 rounded-full flex items-center justify-center bg-red-500/20">
+              <div className="w-0 h-0 border-l-10 border-l-white border-t-6 border-t-transparent border-b-6 border-b-transparent ml-1"></div>
             </div>
           </div>
         </div>

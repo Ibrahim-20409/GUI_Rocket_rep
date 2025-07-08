@@ -12,13 +12,11 @@ function App() {
   const [showVideo, setShowVideo] = useState(true);
   const [activeTab, setActiveTab] = useState<'form' | 'map' | 'results'>('form');
   const [formData, setFormData] = useState<LaunchParameters | null>(null);
-  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(true); // Start as fullscreen
   const { simulation, isRunning, runSimulation } = useSimulation();
 
   const handleVideoClick = () => {
     setShowVideo(false);
-    // Automatically enter fullscreen after intro
-    requestFullscreen();
   };
 
   const requestFullscreen = () => {
