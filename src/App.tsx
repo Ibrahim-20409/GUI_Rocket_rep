@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { VideoIntro } from './components/VideoIntro';
 import { VideoBackground } from './components/VideoBackground';
 import { RocketForm } from './components/RocketForm';
 import { SimulationResults } from './components/SimulationResults';
@@ -8,9 +9,14 @@ import { LaunchParameters } from './types/rocket';
 import { Rocket, Activity, Map, BarChart3 } from 'lucide-react';
 
 function App() {
+  const [showVideo, setShowVideo] = useState(true);
   const [activeTab, setActiveTab] = useState<'form' | 'map' | 'results'>('form');
   const [formData, setFormData] = useState<LaunchParameters | null>(null);
   const { simulation, isRunning, runSimulation } = useSimulation();
+
+  const handleVideoClick = () => {
+    setShowVideo(false);
+  };
 
   const handleFormSubmit = async (data: LaunchParameters) => {
     setFormData(data);
@@ -27,6 +33,11 @@ function App() {
       });
     }
   };
+
+  // Show intro video first
+  if (showVideo) {
+    return <VideoIntro onVideoClick={handleVideoClick} />;
+  }
 
   const tabs = [
     { id: 'form', label: 'Configuration', icon: <Rocket className="w-5 h-5" /> },
