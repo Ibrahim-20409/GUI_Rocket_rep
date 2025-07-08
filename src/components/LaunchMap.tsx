@@ -68,14 +68,14 @@ export const LaunchMap: React.FC<LaunchMapProps> = ({ latitude, longitude, onCoo
   }, [popupLabel, latitude, longitude]);
 
   return (
-    <div className="bg-gray-900/90 backdrop-blur-sm border border-gray-700 rounded-xl p-6">
+    <div className="bg-gray-900/95 backdrop-blur-md border border-gray-700/50 rounded-xl p-6">
       <div className="flex items-center gap-2 mb-6">
         <Globe className="w-5 h-5 text-red-500" />
         <h3 className="text-xl font-semibold text-white">Launch Site Selection</h3>
       </div>
 
       {/* 🗺️ Real Interactive Map */}
-      <div className="rounded-lg overflow-hidden mb-6 h-[460px] z-0">
+      <div className="rounded-lg overflow-hidden mb-6 h-[400px] z-0">
         <MapContainer
           center={[latitude, longitude]}
           zoom={14}
